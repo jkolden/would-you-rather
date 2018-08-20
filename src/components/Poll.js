@@ -37,7 +37,7 @@ class Poll extends Component {
       </div>
       <div className='poll-question'>
       <div>Would you rather {question.optionTwo.text}</div>
-      <div className='center'>{questionTwoVotes} of {totalVotes} Votes</div>
+      <div className='center'>{questionTwoVotes} out of {totalVotes} Votes</div>
       </div>
 
 

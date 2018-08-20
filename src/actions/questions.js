@@ -1,8 +1,9 @@
-import { _saveQuestion } from '../utils/_Data'
+import { _saveQuestion, _saveQuestionAnswer } from '../utils/_Data'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
+export const SAVE_VOTE = 'SAVE_VOTE'
 
 export function receiveQuestions(questions) {
   return {
@@ -10,6 +11,32 @@ export function receiveQuestions(questions) {
     questions
 
   }
+}
+
+function vote ( authedUser, qid, answer) {
+
+  return {
+    type: SAVE_VOTE,
+    authedUser,
+    qid,
+    answer,
+
+  }
+
+}
+
+export function handleVote( authedUser, qid, answer) {
+
+return (dispatch, getState) => {
+  return _saveQuestionAnswer({
+      authedUser,
+      qid,
+      answer
+
+    })
+    .then(() => dispatch(vote(authedUser, qid, answer)))
+}
+
 
 }
 
@@ -17,9 +44,7 @@ function addQuestion (question) {
   return {
     type: ADD_QUESTION,
     question
-
   }
-
 }
 
 export function handleAddQuestion(question) {
