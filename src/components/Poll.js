@@ -5,7 +5,6 @@ import { Link, withRouter } from 'react-router-dom'
 class Poll extends Component {
 
   render() {
-    console.log(this.props)
 
     const { authedUser, users, question, hasAnswered, author, id} = this.props
 

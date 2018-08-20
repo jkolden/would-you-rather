@@ -1,6 +1,5 @@
 import { RECEIVE_QUESTIONS, ADD_QUESTION, SAVE_VOTE } from '../actions/questions'
 
-
 export default function questions (state = {}, action) {
 
   switch(action.type) {
@@ -10,7 +9,7 @@ export default function questions (state = {}, action) {
         ...action.questions
       }
     case ADD_QUESTION :
-      //const { question } = action
+
       return {
         ...state,
         [action.question.id]: action.question

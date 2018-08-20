@@ -5,6 +5,10 @@ import { handleVote } from '../actions/questions'
 
 class Vote extends Component {
 
+  state = {
+    toResults: false
+  }
+
 handleChange = (changeEvent) => {
 
   console.log('You selected ', changeEvent.target.value)
@@ -18,13 +22,13 @@ handleChange = (changeEvent) => {
 
     e.preventDefault()
 
-    console.log('I have been submitted')
-
     const { dispatch, id, authedUser } = this.props
 
     dispatch(handleVote(authedUser, id, this.state.selectedOption))
 
-    return <Redirect to='/' />
+    this.setState(() => ({
+      toResults: true
+    }))
 
   }
 
@@ -32,7 +36,14 @@ handleChange = (changeEvent) => {
 
   render() {
 
-    const { question } = this.props
+    const { toResults } = this.state
+
+    const { question, id } = this.props
+
+    /*redirect to results view if submitted*/
+    if (toResults === true) {
+      return <Redirect to={`/results/${id}`} />
+    }
 
     return (
 <form onSubmit={this.handleSubmit}>
