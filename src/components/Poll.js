@@ -6,7 +6,7 @@ class Poll extends Component {
 
   render() {
 
-    const { authedUser, users, question, hasAnswered, author, id} = this.props
+    const { authedUser, users, question, hasAnswered, author, id, yourVote} = this.props
 
     const questionOneVotes = question.optionOne.votes.length
     const questionTwoVotes = question.optionTwo.votes.length
@@ -33,10 +33,12 @@ class Poll extends Component {
       <div className='poll-question'>
       <div>Would you rather {question.optionOne.text} </div>
       <div className='center'>{questionOneVotes} out of {totalVotes} Votes</div>
+      {yourVote === 'optionOne' && <div>You Voted!</div>}
       </div>
       <div className='poll-question'>
       <div>Would you rather {question.optionTwo.text}</div>
       <div className='center'>{questionTwoVotes} out of {totalVotes} Votes</div>
+       {yourVote === 'optionTwo' && <div>You Voted!</div>}
       </div>
 
 
@@ -49,6 +51,8 @@ function mapStateToProps ({authedUser, users, questions}, { id }) {
   const question = questions[id]
   const hasAnswered = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
   const author = users[question.author]
+  const yourVote = users[authedUser].answers[id]
+
 
 
   return {
@@ -56,7 +60,8 @@ function mapStateToProps ({authedUser, users, questions}, { id }) {
     users,
     question,
     hasAnswered,
-    author
+    author,
+    yourVote
   }
 
 }

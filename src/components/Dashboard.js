@@ -6,9 +6,6 @@ class Dashboard extends Component {
 
   render () {
 
-    console.log('questionIds')
-    console.log(this.props)
-
     return (
       <div>
       <h3>Your Questions</h3>

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import { handleVote } from '../actions/questions'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 class Vote extends Component {
 
@@ -10,8 +12,6 @@ class Vote extends Component {
   }
 
 handleChange = (changeEvent) => {
-
-  console.log('You selected ', changeEvent.target.value)
 
   this.setState({
     selectedOption: changeEvent.target.value
@@ -67,8 +67,9 @@ handleChange = (changeEvent) => {
             { question.optionTwo.text }
           </label>
         </div>
-
-        <button className='btn' type='submit'>Submit</button>
+        <Button variant="contained" color="primary" type='submit' >
+        Submit
+      </Button>
 
       </form>
 
