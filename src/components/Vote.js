@@ -2,12 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import { handleVote } from '../actions/questions'
-import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-
+import { Button, Divider, Card, Form, Header, Image, Container } from 'semantic-ui-react';
 
 
 class Vote extends Component {
@@ -16,10 +11,12 @@ class Vote extends Component {
     toResults: false
   }
 
-handleChange = (changeEvent) => {
+handleChange = (changeEvent,   value  ) => {
+
+  console.log(value.value)
 
   this.setState({
-    selectedOption: changeEvent.target.value
+    selectedOption:  value.value
   })
 }
 
@@ -43,7 +40,7 @@ handleChange = (changeEvent) => {
 
     const { toResults } = this.state
 
-    const { question, id } = this.props
+    const { question, id, users } = this.props
 
     /*redirect to results view if submitted*/
     if (toResults === true) {
@@ -51,35 +48,44 @@ handleChange = (changeEvent) => {
     }
 
     return (
-<form onSubmit={this.handleSubmit}>
-<Paper>
-        <div className="radio">
-          <label>
-            <input
+      <Container>
+
+      <Header as='h2'>
+
+      <Image
+            src={users[question.author].avatarURL}
+            alt={`Avatar of $users[question.author].name}`}
+            avatar
+          />
+        <span>{users[question.author].name} asks if you would rather...</span>
+
+        </Header>
+
+        <Form onSubmit={this.handleSubmit}>
+
+            <Form.Radio
+              label={ question.optionOne.text }
               type="radio"
               name="radio"
               value="optionOne"
               onChange={this.handleChange} />
-            { question.optionOne.text }
-          </label>
-        </div>
-        </Paper>
-         <Divider inset />
-        <div className="radio">
-          <label>
-            <input
+
+         <Divider/>
+
+            <Form.Radio
+              label={ question.optionOne.text }
               type="radio"
               name="radio"
               value="optionTwo"
               onChange={this.handleChange} />
-            { question.optionTwo.text }
-          </label>
-        </div>
-        <Button variant="contained" color="primary" type='submit' >
+
+        <Button variant="contained" type='submit' >
         Submit
       </Button>
 
-      </form>
+      </Form>
+
+      </Container>
 
       )
   }
@@ -93,7 +99,8 @@ function mapStateToProps ({authedUser, users, questions}, props ) {
   return {
     id,
     question,
-    authedUser
+    authedUser,
+    users
   }
 
 }

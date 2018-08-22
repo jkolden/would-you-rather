@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import Badge from '@material-ui/core/Badge';
+import { Container, Header, Image, Message } from 'semantic-ui-react'
 
 class Poll extends Component {
 
@@ -14,36 +15,37 @@ class Poll extends Component {
     const totalVotes = questionOneVotes + questionTwoVotes
 
     return (
-      <div className="question">
       <div>
 
-      <img
-            src={author.avatarURL}
-            alt={`Avatar of ${author.name}`}
-            className='avatar'
+      <Header as='h2'>
+
+      <Image
+            src={users[question.author].avatarURL}
+            alt={`Avatar of ${users[question.author].name}`}
+            avatar
           />
+        <span>Asked by {users[question.author].name}</span>
 
+        </Header>
 
       <div>
-      <span>{hasAnswered.toString()}</span>
-      </div>
 
-
-      Added by {question.author}
-      </div>
-
-      <div className='poll-question'>
-      <div>Would you rather {question.optionOne.text} </div>
-      <div className='center'>{questionOneVotes} out of {totalVotes} Votes</div>
-      {yourVote === 'optionOne' && <div>You Voted!</div>}
 
       </div>
 
-      <div className='poll-question'>
-      <div>Would you rather {question.optionTwo.text}</div>
-      <div className='center'>{questionTwoVotes} out of {totalVotes} Votes</div>
-       {yourVote === 'optionTwo' && <div>You Voted!</div>}
-      </div>
+      <Container>
+      <Header as='h2'>Would you rather {question.optionOne.text}</Header>
+
+      <div>{questionOneVotes} out of {totalVotes} Votes</div>
+      {yourVote === 'optionOne' && <Message color='green'>Your Vote!</Message>}
+
+      </Container>
+
+      <Container>
+     <Header as='h2'>Would you rather {question.optionTwo.text}</Header>
+      <div>{questionTwoVotes} out of {totalVotes} Votes</div>
+       {yourVote === 'optionTwo' &&  <Message color='green'>Your Vote!</Message>}
+      </Container>
 
 
       </div>

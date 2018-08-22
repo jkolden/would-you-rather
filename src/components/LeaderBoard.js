@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import { Card, Image, Header, Divider } from 'semantic-ui-react'
+
 
 class LeaderBoard extends Component {
 
@@ -17,24 +14,39 @@ class LeaderBoard extends Component {
     return (
 
       <div>
+
+      <Card.Group>
+
+
       {
     Object.keys(users).map((key) => (
-          <Card key={key}>
-      <CardContent>
-        <Typography color="textPrimary">
-          {users[key].name}
-          {users[key].questions.size}
-        </Typography>
-        <Typography color="textPrimary">
-          Questions Asked: {users[key].questions.length}
-        </Typography>
-        <Typography color="textPrimary">
-          Questions Answered: {Object.keys(users[key].answers).length}
-        </Typography>
-         </CardContent>
-         </Card>
-      ))
-      }
+
+      <Card>
+<Card.Header as='h2'>
+      <Image
+            src={users[key].avatarURL}
+            alt={`Avatar of ${users[key].name}`}
+            avatar
+          />
+        <span>{users[key].name}</span>
+        </Card.Header>
+
+        <Card.Content>
+         <Header as='h4'>Questions Answered: {Object.keys(users[key].answers).length}</Header>
+         <Header as='h4'>Questions Asked: {users[key].questions.length}</Header>
+         <Divider />
+         <Header as='h4'>Total Points: {users[key].questions.length + Object.keys(users[key].answers).length}</Header>
+
+        </Card.Content>
+       </Card>
+
+          ))
+       }
+
+       </Card.Group>
+
+
+
     </div>
       )
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
-import { Image } from 'semantic-ui-react'
+import { Image, Button, Header } from 'semantic-ui-react'
 
 
 class Question extends Component {
@@ -11,27 +11,32 @@ class Question extends Component {
     const { authedUser, users, question, hasAnswered, author, id} = this.props
 
     return (
-      <Link to={hasAnswered === true ? `/results/${id}` : `/vote/${id}`} className="question">
+      <div>
 
       <div>
 
+<Header as='h2'>
       <Image
             src={author.avatarURL}
             alt={`Avatar of ${author.name}`}
             avatar
           />
-      <span>{question.author} asks would you rather...</span>
+      <span>{author.name} asks</span>
+ </Header>
 
       </div>
 
 
-      <span>{question.optionOne.text} </span>
+      <p>Would you rather {question.optionOne.text}...</p>
       <div>
-      <button className='btn'>View Poll</button>
+      <Link to={hasAnswered === true ? `/results/${id}` : `/vote/${id}`} className="question">
+      <Button positive fluid>View Poll</Button>
+      </Link>
       </div>
 
 
-      </Link>
+
+      </div>
       )
   }
 }
