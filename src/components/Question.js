@@ -1,35 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import { Image } from 'semantic-ui-react'
+
 
 class Question extends Component {
 
   render() {
-    console.log(this.props)
 
     const { authedUser, users, question, hasAnswered, author, id} = this.props
 
     return (
       <Link to={hasAnswered === true ? `/results/${id}` : `/vote/${id}`} className="question">
+
       <div>
 
-      <img
+      <Image
             src={author.avatarURL}
             alt={`Avatar of ${author.name}`}
-            className='avatar'
+            avatar
           />
+      <span>{question.author} asks would you rather...</span>
 
-
-      <div>
-      <span>{hasAnswered.toString()}</span>
       </div>
 
 
-      {question.author} asks..
-      </div>
-      <span>Would you rather </span>
       <span>{question.optionOne.text} </span>
-      <span>...</span>
       <div>
       <button className='btn'>View Poll</button>
       </div>

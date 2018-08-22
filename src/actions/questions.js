@@ -49,7 +49,7 @@ function addQuestion (question) {
 
 export function handleAddQuestion(question) {
 
-  return (dispatch, getState) => {
+    return (dispatch, getState) => {
     const { authedUser } = getState()
 
     const optionOneText = question.optionOneText

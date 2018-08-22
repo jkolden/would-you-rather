@@ -10,20 +10,13 @@ import Typography from '@material-ui/core/Typography';
 
 class LeaderBoard extends Component {
 
-
   render () {
 
     const { users } = this.props
 
-
     return (
 
       <div>
-
-
-
-
-
       {
     Object.keys(users).map((key) => (
           <Card key={key}>
@@ -40,14 +33,10 @@ class LeaderBoard extends Component {
         </Typography>
          </CardContent>
          </Card>
-
       ))
       }
-
     </div>
-
       )
-
   }
 }
 
@@ -56,7 +45,6 @@ function mapStateToProps ({users}) {
   return {
     users
   }
-
 }
 
 export default connect(mapStateToProps)(LeaderBoard)

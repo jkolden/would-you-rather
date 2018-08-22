@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
+import { Segment, Button, Divider } from 'semantic-ui-react'
+import { Checkbox, Form, TextArea } from 'semantic-ui-react'
+
+
 
 class NewQuestion extends Component {
 
@@ -47,8 +51,6 @@ class NewQuestion extends Component {
       optionTwo: '',
       toHome: true
     }))
-
-
   }
 
   render() {
@@ -63,34 +65,35 @@ class NewQuestion extends Component {
       <div>
       <h3 className="center">Compose New Question</h3>
 
-      <form className="new-question" onSubmit={this.handleSubmit}>
+      <Form className="new-question" onSubmit={this.handleSubmit}>
 
-      <textarea
+    <Form.Field>
+      <TextArea
       placeholder="Enter the first option"
       value={optionOne}
       onChange={this.handleOptionOneChange}
-      className="text-area"
       maxLength={280}
       />
-      <div>
-      Or
-      </div>
+    </Form.Field>
 
-      <textarea
+    <Divider horizontal>Or</Divider>
+
+    <Form.Field>
+      <TextArea
       placeholder="Enter the second option"
       value={optionTwo}
       onChange={this.handleOptionTwoChange}
-      className="text-area"
       maxLength={280}
       />
+    </Form.Field>
 
-      <button
-      className='btn'
+      <Button
+      positive
       type='submit'
       disabled={optionOne === '' || optionTwo === ''}
-      >Submit</button>
+      >Submit</Button>
 
-      </form>
+      </Form>
 
       </div>
 

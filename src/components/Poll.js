@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import Badge from '@material-ui/core/Badge';
 
 class Poll extends Component {
 
@@ -30,11 +31,14 @@ class Poll extends Component {
 
       Added by {question.author}
       </div>
+
       <div className='poll-question'>
       <div>Would you rather {question.optionOne.text} </div>
       <div className='center'>{questionOneVotes} out of {totalVotes} Votes</div>
       {yourVote === 'optionOne' && <div>You Voted!</div>}
+
       </div>
+
       <div className='poll-question'>
       <div>Would you rather {question.optionTwo.text}</div>
       <div className='center'>{questionTwoVotes} out of {totalVotes} Votes</div>

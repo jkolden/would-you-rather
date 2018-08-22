@@ -27,7 +27,7 @@ title: "Would you rather eat...",
 formattedQuestion = {
 id: 27356
 author: "john.kolden"
-title: "Would you rather eat..."
+title: "Would you rather eat...",
 questions: [{
  text: "Would you rather eat glass?"
  votes: ["dan_abramov", "tyler_mcgninnis"]

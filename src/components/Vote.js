@@ -4,6 +4,11 @@ import { Link, withRouter, Redirect } from 'react-router-dom'
 import { handleVote } from '../actions/questions'
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+
+
 
 class Vote extends Component {
 
@@ -47,6 +52,7 @@ handleChange = (changeEvent) => {
 
     return (
 <form onSubmit={this.handleSubmit}>
+<Paper>
         <div className="radio">
           <label>
             <input
@@ -57,6 +63,8 @@ handleChange = (changeEvent) => {
             { question.optionOne.text }
           </label>
         </div>
+        </Paper>
+         <Divider inset />
         <div className="radio">
           <label>
             <input
