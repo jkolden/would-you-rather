@@ -3,7 +3,7 @@ import { receiveUsers } from '../actions/users'
 import { receiveQuestions } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 
-const AUTHED_ID = 'tylermcginnis'
+const AUTHED_ID = ''
 
 
 export function handleInitialData () {
@@ -14,7 +14,7 @@ export function handleInitialData () {
         //add these to the Redux store
         dispatch(receiveUsers(users))
         dispatch(receiveQuestions(questions))
-        dispatch(setAuthedUser(AUTHED_ID))
+        //dispatch(setAuthedUser(AUTHED_ID))
 
       })
 

@@ -12,7 +12,6 @@ class Question extends Component {
 
     return (
       <div>
-
       <div>
 
 <Header as='h2'>
@@ -26,16 +25,12 @@ class Question extends Component {
 
       </div>
 
-
       <p>Would you rather {question.optionOne.text}...</p>
       <div>
       <Link to={hasAnswered === true ? `/results/${id}` : `/vote/${id}`} className="question">
       <Button positive fluid>View Poll</Button>
       </Link>
       </div>
-
-
-
       </div>
       )
   }

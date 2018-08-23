@@ -11,18 +11,19 @@ class LeaderBoard extends Component {
 
     const { users } = this.props
 
+
+
     return (
 
       <div>
 
       <Card.Group>
 
-
       {
     Object.keys(users).map((key) => (
 
       <Card>
-<Card.Header as='h2'>
+      <Card.Header as='h2'>
       <Image
             src={users[key].avatarURL}
             alt={`Avatar of ${users[key].name}`}

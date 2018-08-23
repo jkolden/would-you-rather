@@ -8,13 +8,10 @@ class ResultsPage extends Component {
     const { id, question } = this.props
     console.log(question)
 
-
     return (
       <div>
       <Poll id={id}/>
-
       </div>
-
       )
   }
 

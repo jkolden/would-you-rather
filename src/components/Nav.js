@@ -1,5 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import fakeAuth from '../utils/auth.js'
+
  export default function Nav () {
   return (
     <nav className='nav'>
@@ -10,13 +12,18 @@ import { NavLink } from 'react-router-dom'
           </NavLink>
         </li>
         <li>
-          <NavLink to='/new' activeClassName='active'>
+          <NavLink to='/add' activeClassName='active'>
             New Question
           </NavLink>
         </li>
         <li>
-          <NavLink to='/leader' activeClassName='active'>
+          <NavLink to='/leaderboard' activeClassName='active'>
             Leader Board
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/login' activeClassName='active'>
+            Login
           </NavLink>
         </li>
       </ul>
