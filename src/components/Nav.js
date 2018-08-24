@@ -21,11 +21,6 @@ import fakeAuth from '../utils/auth.js'
             Leader Board
           </NavLink>
         </li>
-        <li>
-          <NavLink to='/login' activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
       </ul>
     </nav>
   )

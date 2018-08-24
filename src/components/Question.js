@@ -8,7 +8,7 @@ class Question extends Component {
 
   render() {
 
-    const { authedUser, users, question, hasAnswered, author, id} = this.props
+    const { authedUser, users, question, author, id} = this.props
 
     return (
       <div>
@@ -27,7 +27,7 @@ class Question extends Component {
 
       <p>Would you rather {question.optionOne.text}...</p>
       <div>
-      <Link to={hasAnswered === true ? `/results/${id}` : `/vote/${id}`} className="question">
+      <Link to={`/question/${id}`} className="question">
       <Button positive fluid>View Poll</Button>
       </Link>
       </div>
@@ -38,15 +38,12 @@ class Question extends Component {
 
 function mapStateToProps ({authedUser, users, questions}, { id }) {
   const question = questions[id]
-  const hasAnswered = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
   const author = users[question.author]
-
 
   return {
     authedUser,
     users,
     question,
-    hasAnswered,
     author
   }
 

@@ -44,7 +44,7 @@ handleChange = (changeEvent,   value  ) => {
 
     /*redirect to results view if submitted*/
     if (toResults === true) {
-      return <Redirect to={`/results/${id}`} />
+      return <Redirect to={`/question/${id}`} />
     }
 
     return (
@@ -73,7 +73,7 @@ handleChange = (changeEvent,   value  ) => {
          <Divider/>
 
             <Form.Radio
-              label={ question.optionOne.text }
+              label={ question.optionTwo.text }
               type="radio"
               name="radio"
               value="optionTwo"
@@ -91,9 +91,9 @@ handleChange = (changeEvent,   value  ) => {
   }
 }
 
-function mapStateToProps ({authedUser, users, questions}, props ) {
+function mapStateToProps ({authedUser, users, questions}, { id } ) {
 
-  const { id } = props.match.params
+  //const { id } = props.match.params
   const question = questions[id]
 
   return {
