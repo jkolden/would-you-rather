@@ -6,7 +6,11 @@ import Vote from './Vote'
 class ResultsPage extends Component {
 
   render () {
-    const { id, question, hasAnswered } = this.props
+    const { id, hasAnswered, question } = this.props
+
+    if (question === null) {
+      return <p>404 Not Found</p>
+    }
 
     if (hasAnswered === true) {
 
@@ -27,17 +31,15 @@ class ResultsPage extends Component {
 }
 
 function mapStateToProps ({authedUser, users, questions}, props ) {
+
   const { id } = props.match.params
   const question = questions[id]
-  const yourVote = users[authedUser].answers[id]
   const hasAnswered = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
-
 
    return {
     id,
-    question,
-    hasAnswered
-
+    hasAnswered,
+    question
   }
 }
 

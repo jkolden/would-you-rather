@@ -9,45 +9,41 @@ class LeaderBoard extends Component {
 
   render () {
 
-    const { users } = this.props
-
-
+    const { users, scores } = this.props
 
     return (
 
       <div>
-
       <Card.Group>
 
       {
-    Object.keys(users).map((key) => (
+    scores.map((obj) => {
+
+      return (
 
       <Card>
       <Card.Header as='h2'>
       <Image
-            src={users[key].avatarURL}
-            alt={`Avatar of ${users[key].name}`}
+            src={obj.avatar}
+            alt={`Avatar of ${obj.name}`}
             avatar
           />
-        <span>{users[key].name}</span>
+        <span>{obj.name}</span>
         </Card.Header>
 
         <Card.Content>
-         <Header as='h4'>Questions Answered: {Object.keys(users[key].answers).length}</Header>
-         <Header as='h4'>Questions Asked: {users[key].questions.length}</Header>
+         <Header as='h4'>Questions Answered: {obj.answers}</Header>
+         <Header as='h4'>Questions Asked: {obj.questions}</Header>
          <Divider />
-         <Header as='h4'>Total Points: {users[key].questions.length + Object.keys(users[key].answers).length}</Header>
+         <Header as='h4'>Total Points: {obj.total}</Header>
 
         </Card.Content>
        </Card>
-
-          ))
+          )}
+        )
        }
 
        </Card.Group>
-
-
-
     </div>
       )
   }
@@ -55,8 +51,25 @@ class LeaderBoard extends Component {
 
 function mapStateToProps ({users}) {
 
+ let scores = Object.keys(users).map((key) => {
+
+    return {
+      'user': key,
+      'name': users[key].name,
+      'avatar': users[key].avatarURL,
+      'answers': Object.keys(users[key].answers).length,
+      'questions': users[key].questions.length,
+      'total': Object.keys(users[key].answers).length + users[key].questions.length
+    }
+
+  }).sort(function(a, b) {
+    return b.total - a.total
+  })
+
+
   return {
-    users
+    users,
+    scores
   }
 }
 

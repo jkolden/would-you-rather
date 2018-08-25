@@ -44,7 +44,7 @@ handleChange = (changeEvent,   value  ) => {
 
     /*redirect to results view if submitted*/
     if (toResults === true) {
-      return <Redirect to={`/question/${id}`} />
+      return <Redirect to={`/questions/${id}`} />
     }
 
     return (
@@ -78,6 +78,8 @@ handleChange = (changeEvent,   value  ) => {
               name="radio"
               value="optionTwo"
               onChange={this.handleChange} />
+
+          <Divider/>
 
         <Button variant="contained" type='submit' >
         Submit

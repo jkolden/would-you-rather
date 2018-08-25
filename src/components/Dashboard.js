@@ -56,8 +56,7 @@ class Dashboard extends Component {
 
  function mapStateToProps ({ questions, authedUser }) {
 
-
-  //returns an array of objects so object.keys will not work anymore:
+  //returns an array of objects:
   let unansweredQuestions = Object.values(questions).filter((question) =>
     !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser))
 

@@ -41,7 +41,7 @@ class Login extends React.Component {
 
     return (
       <div>
-        <p>Login in as one of the following users: {from.pathname}</p>
+        <p>Login in as one of the following users to access: {from.pathname}</p>
 
         <Form onSubmit={this.handleSubmit}>
 

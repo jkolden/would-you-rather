@@ -27,7 +27,7 @@ class Question extends Component {
 
       <p>Would you rather {question.optionOne.text}...</p>
       <div>
-      <Link to={`/question/${id}`} className="question">
+      <Link to={`/questions/${id}`} className="question">
       <Button positive fluid>View Poll</Button>
       </Link>
       </div>
