@@ -2,10 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
-import { Segment, Button, Divider } from 'semantic-ui-react'
-import { Checkbox, Form, TextArea } from 'semantic-ui-react'
-
-
+import { Button, Divider, Form, TextArea } from 'semantic-ui-react'
 
 class NewQuestion extends Component {
 

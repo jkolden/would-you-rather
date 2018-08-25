@@ -1,16 +1,12 @@
-import React, { Component, Fragment } from 'react'
-import logo from '../logo.svg'
+import React, { Component } from 'react'
 import '../App.css'
 import { connect } from 'react-redux'
-import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
-import Question from './Question'
 import ResultsPage from './ResultsPage'
 import LeaderBoard from './LeaderBoard'
-import Vote from './Vote'
 import Nav from './Nav'
 import Login from './Login'
 import { fakeAuth } from '../utils/auth.js'
@@ -70,13 +66,6 @@ class App extends Component {
 
       </Router>
     );
-  }
-}
-
-function mapStateToProps({ authedUser }) {
-
-  return {
-    loading: authedUser === null
   }
 }
 

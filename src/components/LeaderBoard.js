@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
-import { withStyles } from '@material-ui/core/styles';
 import { Card, Image, Header, Divider } from 'semantic-ui-react'
 
 
@@ -9,7 +7,7 @@ class LeaderBoard extends Component {
 
   render () {
 
-    const { users, scores } = this.props
+    const { scores } = this.props
 
     return (
 
@@ -21,7 +19,7 @@ class LeaderBoard extends Component {
 
       return (
 
-      <Card>
+      <Card key={obj.user}>
       <Card.Header as='h2'>
       <Image
             src={obj.avatar}
@@ -68,7 +66,6 @@ function mapStateToProps ({users}) {
 
 
   return {
-    users,
     scores
   }
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { handleVote } from '../actions/questions'
-import { Button, Divider, Card, Form, Header, Image, Container } from 'semantic-ui-react';
+import { Button, Divider, Form, Header, Image, Container } from 'semantic-ui-react';
 
 
 class Vote extends Component {
@@ -95,7 +95,6 @@ handleChange = (changeEvent,   value  ) => {
 
 function mapStateToProps ({authedUser, users, questions}, { id } ) {
 
-  //const { id } = props.match.params
   const question = questions[id]
 
   return {

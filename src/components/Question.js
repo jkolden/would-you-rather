@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Image, Button, Header } from 'semantic-ui-react'
 
 
@@ -8,7 +8,7 @@ class Question extends Component {
 
   render() {
 
-    const { authedUser, users, question, author, id} = this.props
+    const { question, author, id} = this.props
 
     return (
       <div>
@@ -41,10 +41,9 @@ function mapStateToProps ({authedUser, users, questions}, { id }) {
   const author = users[question.author]
 
   return {
-    authedUser,
-    users,
     question,
-    author
+    author,
+    id
   }
 
 }

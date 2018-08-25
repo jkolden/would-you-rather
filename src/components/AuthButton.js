@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { fakeAuth } from '../utils/auth'
 import { Image } from 'semantic-ui-react'
 import { setAuthedUser } from '../actions/authedUser'

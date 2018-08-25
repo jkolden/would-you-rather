@@ -8,8 +8,8 @@ class ResultsPage extends Component {
   render () {
     const { id, hasAnswered, question } = this.props
 
-    if (question === null) {
-      return <p>404 Not Found</p>
+    if (typeof(question) === 'undefined') {
+      return <p>404: No question with that id can be found</p>
     }
 
     if (hasAnswered === true) {
@@ -27,13 +27,17 @@ class ResultsPage extends Component {
       </div>
       )
   }
-
 }
 
 function mapStateToProps ({authedUser, users, questions}, props ) {
 
   const { id } = props.match.params
   const question = questions[id]
+
+  if (typeof(question) === 'undefined') {
+    return question
+  }
+
   const hasAnswered = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
 
    return {

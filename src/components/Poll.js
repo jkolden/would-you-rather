@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
 import { Container, Header, Image, Message } from 'semantic-ui-react'
 
 class Poll extends Component {
 
   render() {
 
-    const { authedUser, users, question, hasAnswered, author, id, yourVote} = this.props
+    const { users, question, yourVote} = this.props
 
     const questionOneVotes = question.optionOne.votes.length
     const questionTwoVotes = question.optionTwo.votes.length
@@ -56,16 +55,11 @@ class Poll extends Component {
 
 function mapStateToProps ({authedUser, users, questions}, { id }) {
   const question = questions[id]
-  const hasAnswered = question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser)
-  const author = users[question.author]
   const yourVote = users[authedUser].answers[id]
 
   return {
-    authedUser,
     users,
     question,
-    hasAnswered,
-    author,
     yourVote
   }
 }

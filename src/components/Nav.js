@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import fakeAuth from '../utils/auth.js'
 
  export default function Nav () {
   return (
