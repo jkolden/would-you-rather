@@ -8,7 +8,8 @@ import { Button, Divider, Form, Header, Image, Container } from 'semantic-ui-rea
 class Vote extends Component {
 
   state = {
-    toResults: false
+    toResults: false,
+    selectedOption: ''
   }
 
 handleChange = (changeEvent,   value  ) => {
@@ -21,6 +22,11 @@ handleChange = (changeEvent,   value  ) => {
 }
 
   handleSubmit = (e) => {
+
+    if (this.state.selectedOption === '') {
+      alert('Please make a selection before submitting')
+      return
+    }
 
     e.preventDefault()
 
@@ -66,6 +72,7 @@ handleChange = (changeEvent,   value  ) => {
             <Form.Radio
               label={ question.optionOne.text }
               type="radio"
+              checked={(this.state.selectedOption==='optionOne')?true:false}
               name="radio"
               value="optionOne"
               onChange={this.handleChange} />
@@ -75,6 +82,7 @@ handleChange = (changeEvent,   value  ) => {
             <Form.Radio
               label={ question.optionTwo.text }
               type="radio"
+              checked={(this.state.selectedOption==='optionTwo')?true:false}
               name="radio"
               value="optionTwo"
               onChange={this.handleChange} />

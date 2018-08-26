@@ -13,6 +13,11 @@ class Login extends React.Component {
   };
 
   login = () => {
+    if (this.state.selectedOption === '') {
+      alert('Please make a selection before submitting')
+      return
+    }
+
     const { dispatch } = this.props
     dispatch(setAuthedUser(this.state.selectedOption))
 
